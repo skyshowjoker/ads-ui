@@ -14,7 +14,19 @@ import en from '@angular/common/locales/en';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { NzGridModule } from 'ng-zorro-antd/grid';
+import {NzMenuModule} from 'ng-zorro-antd/menu';
+import {NzBreadCrumbModule} from 'ng-zorro-antd/breadcrumb';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { RouterModule } from '@angular/router';
+import { AppRoutingModule } from './app-routing.module';
+import { NzUploadModule } from 'ng-zorro-antd/upload';
+import { NzDescriptionsModule } from 'ng-zorro-antd/descriptions';
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzCardModule } from 'ng-zorro-antd/card';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NzButtonModule } from 'ng-zorro-antd/button';
 registerLocaleData(en);
 
 @NgModule({
@@ -30,7 +42,18 @@ registerLocaleData(en);
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NzLayoutModule,
+    NzBreadCrumbModule,
+    NzIconModule,
+    RouterModule,
+    AppRoutingModule,
+    NzUploadModule,
+    NzDescriptionsModule,
+    NzFormModule,
+    NzCardModule,
+    ReactiveFormsModule,
+    NzButtonModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US }

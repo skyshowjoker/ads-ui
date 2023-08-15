@@ -1,1 +1,17 @@
-<p>login works!</p>
+<nz-card nzTitle="登录" class="login-card">
+    <form nz-form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <nz-form-item>
+        <nz-form-control>
+          <input nz-input formControlName="username" placeholder="用户名">
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control>
+          <input nz-input type="password" formControlName="password" placeholder="密码">
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <button nz-button nzType="primary" [nzLoading]="loading" [disabled]="loading">登录</button>
+      </nz-form-item>
+    </form>
+  </nz-card>

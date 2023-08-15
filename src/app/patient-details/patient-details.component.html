@@ -1,1 +1,52 @@
-<p>patient-details works!</p>
+<div>
+  <nz-upload nzType="drag" [nzMultiple]="true" nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+  (nzChange)="handleChange($event)">
+  <p class="ant-upload-drag-icon">
+    <span nz-icon nzType="inbox"></span>
+  </p>
+  <p class="ant-upload-text">上传眼眶淋巴瘤核磁共振图像</p>
+  <p class="ant-upload-hint">
+    支持.nz格式
+  </p>
+</nz-upload>
+</div>
+
+<div>
+  <!-- <nz-radio-group [(ngModel)]="size">
+    <label nz-radio nzValue="default">default</label>
+    <label nz-radio nzValue="middle">middle</label>
+    <label nz-radio nzValue="small">small</label>
+  </nz-radio-group> -->
+  <br />
+  <br />
+  <nz-descriptions nzTitle="病人信息" [nzExtra]="extraTpl" nzBordered [nzSize]="size">
+    <nz-descriptions-item nzTitle="姓名">吴芳</nz-descriptions-item>
+    <nz-descriptions-item nzTitle="出生日期">1978年6月14日</nz-descriptions-item>
+    <nz-descriptions-item nzTitle="性别">女</nz-descriptions-item>
+    <nz-descriptions-item nzTitle="病历号">532</nz-descriptions-item>
+    <nz-descriptions-item nzTitle="手机号">15283476741</nz-descriptions-item>
+    <nz-descriptions-item nzTitle="邮箱地址">993768942@qq.com</nz-descriptions-item>
+    <nz-descriptions-item nzTitle="基本情况">
+      [影像所见]
+      右侧眼球见稍突出，右眶底壁局部骨质缺如，右侧泪囊及鼻泪管见软组织密度影，边缘清楚，CT值约53Hu，左眶及眼球、眼外肌未见明显异常，双侧视神经未见明显异常。两侧上颌窦粘膜增厚。
+    <br />
+    [影像所得]
+      右侧泪囊及鼻泪管占位？无病史，结合临床。必要时进一步增强CT/MR检查。
+      
+     
+    </nz-descriptions-item>
+  </nz-descriptions>
+  <br />
+  <br />
+  <nz-descriptions nzTitle="辅助诊断结果" [nzSize]="size" [nzExtra]="extraTpl">
+    <nz-descriptions-item nzTitle="诊断指标">EMZL/non-EMZL</nz-descriptions-item>
+    <nz-descriptions-item nzTitle="影像日期">2019-8-7</nz-descriptions-item>
+    <nz-descriptions-item nzTitle="模型预测">non-EMZL</nz-descriptions-item>
+    <nz-descriptions-item nzTitle="诊断指标">Indolent/progressive mature B-cell lymphoma</nz-descriptions-item>
+    <nz-descriptions-item nzTitle="影像日期">2019-8-7</nz-descriptions-item>
+    <nz-descriptions-item nzTitle="模型预测">Progressive mature B-cell lymphoma</nz-descriptions-item>
+  </nz-descriptions>
+  <ng-template #extraTpl>
+    <!-- <button nz-button nzType="primary">Edit</button> -->
+  </ng-template>
+</div>
