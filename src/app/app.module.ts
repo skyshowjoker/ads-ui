@@ -27,6 +27,13 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NzButtonModule } from 'ng-zorro-antd/button';
+import { PatientRegisterComponent } from './patient-register/patient-register.component';
+import { PatientDashboardComponent } from './patient-dashboard/patient-dashboard.component';
+import { PatientUploadComponent } from './patient-upload/patient-upload.component';
+import { NzTableModule } from 'ng-zorro-antd/table';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { AppHeaderComponent } from './app-header/app-header.component';
+import { UploadComponent } from './upload/upload.component';
 registerLocaleData(en);
 
 @NgModule({
@@ -36,7 +43,12 @@ registerLocaleData(en);
     DiagnosisResultComponent,
     SettingComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    PatientRegisterComponent,
+    PatientDashboardComponent,
+    PatientUploadComponent,
+    AppHeaderComponent,
+    UploadComponent
   ],
   imports: [
     BrowserModule,
@@ -53,10 +65,13 @@ registerLocaleData(en);
     NzFormModule,
     NzCardModule,
     ReactiveFormsModule,
-    NzButtonModule
+    NzButtonModule,
+    NzTableModule,
+    
   ],
   providers: [
-    { provide: NZ_I18N, useValue: en_US }
+    { provide: NZ_I18N, useValue: en_US },
+    NzMessageService
   ],
   bootstrap: [AppComponent]
 })

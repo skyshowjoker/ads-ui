@@ -1,0 +1,23 @@
+.header {
+    background: #001529;
+    padding: 0;
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo {
+    height: 32px;
+    margin: 16px;
+    background: rgba(255, 255, 255, 0.3);
+  }
+  .title {
+    position: relative;
+    margin-top: 20px;
+    font-size: 149%;
+  }
+  .header-text {
+    color: #fff;
+    font-weight: bold;
+    margin-left: 8px;
+  }
+  

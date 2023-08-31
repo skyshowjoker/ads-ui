@@ -6,13 +6,17 @@ import { PatientDetailsComponent } from './patient-details/patient-details.compo
 import { SettingComponent } from './setting/setting.component';
 import {LoginGuardService} from './service/login-guard.service'
 import { LoginComponent } from './login/login.component';
+import { PatientDashboardComponent } from './patient-dashboard/patient-dashboard.component';
+import { PatientRegisterComponent } from './patient-register/patient-register.component';
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/home' },
   {
     // path: 'home', component: HomeComponent, canActivate: [LoginGuardService],
     path: 'home', component: HomeComponent,
     children: [
-      { path: 'patient-detail', component: PatientDetailsComponent},
+      { path: 'detail', component: PatientDetailsComponent},
+      { path: 'dashboard', component: PatientDashboardComponent},
+      { path: 'register', component: PatientRegisterComponent},
       { path: 'setting', component: SettingComponent}
       
     ]

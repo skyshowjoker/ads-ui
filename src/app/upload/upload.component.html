@@ -1,0 +1,10 @@
+<nz-upload nzType="drag" nzName="file" [nzShowButton]="true" [nzAction] = "" [nzBeforeUpload]="beforeUpload"
+  (nzChange)="handleChange($event)">
+  <p class="ant-upload-drag-icon">
+    <span nz-icon nzType="inbox"></span>
+  </p>
+  <p class="ant-upload-text">上传眼眶淋巴瘤核磁共振图像</p>
+  <p class="ant-upload-hint">
+    支持.nz格式
+  </p>
+</nz-upload>

@@ -1,24 +1,35 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
-import { NzUploadChangeParam } from 'ng-zorro-antd/upload';
+import { NzUploadChangeParam, NzUploadFile } from 'ng-zorro-antd/upload';
 import { NzDescriptionsSize } from 'ng-zorro-antd/descriptions';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpEvent, HttpRequest } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { RequestService } from '../service/http-request.service';
+import { Patient } from '../domain/patient';
 @Component({
   selector: 'app-patient-details',
   templateUrl: './patient-details.component.html',
   styleUrls: ['./patient-details.component.css']
 })
-export class PatientDetailsComponent {
-  constructor() {}
-  size: NzDescriptionsSize = 'default';
-  handleChange({ file, fileList }: NzUploadChangeParam): void {
-    const status = file.status;
-    if (status !== 'uploading') {
-      console.log(file, fileList);
-    }
-    if (status === 'done') {
-      // this.msg.success(`${file.name} file uploaded successfully.`);
-    } else if (status === 'error') {
-      // this.msg.error(`${file.name} file upload failed.`);
-    }
+export class PatientDetailsComponent implements OnInit{
+
+
+  patient: Patient | undefined
+  constructor(
+    private req: RequestService,  
+    private http: HttpClient) {}
+  ngOnInit(): void {
+    this.req.get("/").subscribe(data => {
+      this.patient = data
+    })
   }
+  size: NzDescriptionsSize = 'default';
+
+
+
+
+
+
+
 }

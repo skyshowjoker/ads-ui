@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-
+import { environment } from '../environment/environment';
+const API_URL = environment.apiUrl;
 @Injectable({
   providedIn: 'root'
 })
-export class DataService {
+export class RequestService {
 
   constructor(private http: HttpClient) { }
 
@@ -25,25 +26,25 @@ export class DataService {
       }
     }
 
-    return this.http.get(url, { params: httpParams }).pipe(
+    return this.http.get(API_URL + url, { params: httpParams }).pipe(
       catchError(this.handleError)
     );
   }
 
   post(url: string, data: any): Observable<any> {
-    return this.http.post(url, data).pipe(
+    return this.http.post(API_URL + url, data).pipe(
       catchError(this.handleError)
     );
   }
 
   put(url: string, data: any): Observable<any> {
-    return this.http.put(url, data).pipe(
+    return this.http.put(API_URL + url, data).pipe(
       catchError(this.handleError)
     );
   }
 
   delete(url: string): Observable<any> {
-    return this.http.delete(url).pipe(
+    return this.http.delete(API_URL + url).pipe(
       catchError(this.handleError)
     );
   }
