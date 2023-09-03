@@ -14,7 +14,7 @@ const routes: Routes = [
     // path: 'home', component: HomeComponent, canActivate: [LoginGuardService],
     path: 'home', component: HomeComponent,
     children: [
-      { path: 'detail', component: PatientDetailsComponent},
+      { path: 'detail/:id', component: PatientDetailsComponent},
       { path: 'dashboard', component: PatientDashboardComponent},
       { path: 'register', component: PatientRegisterComponent},
       { path: 'setting', component: SettingComponent}

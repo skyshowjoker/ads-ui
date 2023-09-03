@@ -1,5 +1,5 @@
 <div>
-  <app-upload></app-upload>
+  <app-upload [patientId]="patient!.id"></app-upload>
 </div>
 
 <div>
@@ -10,22 +10,15 @@
   </nz-radio-group> -->
   <br />
   <br />
-  <nz-descriptions nzTitle="病人信息" [nzExtra]="extraTpl" nzBordered [nzSize]="size">
-    <nz-descriptions-item nzTitle="姓名">吴芳</nz-descriptions-item>
-    <nz-descriptions-item nzTitle="出生日期">1978年6月14日</nz-descriptions-item>
-    <nz-descriptions-item nzTitle="性别">女</nz-descriptions-item>
-    <nz-descriptions-item nzTitle="病历号">532</nz-descriptions-item>
-    <nz-descriptions-item nzTitle="手机号">15283476741</nz-descriptions-item>
-    <nz-descriptions-item nzTitle="邮箱地址">993768942@qq.com</nz-descriptions-item>
-    <nz-descriptions-item nzTitle="基本情况">
-      [影像所见]
-      右侧眼球见稍突出，右眶底壁局部骨质缺如，右侧泪囊及鼻泪管见软组织密度影，边缘清楚，CT值约53Hu，左眶及眼球、眼外肌未见明显异常，双侧视神经未见明显异常。两侧上颌窦粘膜增厚。
-    <br />
-    [影像所得]
-      右侧泪囊及鼻泪管占位？无病史，结合临床。必要时进一步增强CT/MR检查。
-      
-     
-    </nz-descriptions-item>
+  <nz-descriptions nzTitle="病人信息" [nzExtra]="extraTpl" nzBordered [nzSize]="size" *ngIf="patient">
+    <nz-descriptions-item nzTitle="姓名">{{patient.name}}</nz-descriptions-item>
+    <nz-descriptions-item nzTitle="出生日期">{{patient.birthday}}</nz-descriptions-item>
+    <nz-descriptions-item nzTitle="性别">{{patient.gender}}</nz-descriptions-item>
+    <nz-descriptions-item nzTitle="病历号">{{patient.caseId}}</nz-descriptions-item>
+    <nz-descriptions-item nzTitle="手机号">{{patient.phone}}</nz-descriptions-item>
+    <nz-descriptions-item nzTitle="邮箱地址">{{patient.email}}</nz-descriptions-item>
+    <nz-descriptions-item nzTitle="基本情况">{{patient.description}}
+  </nz-descriptions-item>
   </nz-descriptions>
   <br />
   <br />

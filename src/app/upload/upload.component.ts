@@ -1,5 +1,5 @@
 import { HttpClient, HttpEvent } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NzDescriptionsSize } from 'ng-zorro-antd/descriptions';
 import { NzUploadFile } from 'ng-zorro-antd/upload';
 import { Observable } from 'rxjs';
@@ -13,7 +13,7 @@ import { RequestService } from '../service/http-request.service';
 export class UploadComponent {
   file: any
   fileList: NzUploadFile[] = []
-
+  @Input() patientId!: number;
 
   constructor(private req: RequestService,  private http: HttpClient) {}
   size: NzDescriptionsSize = 'default';
@@ -57,6 +57,7 @@ export class UploadComponent {
   uploadFile(file: File): Observable<HttpEvent<any>> {
     const formData: FormData = new FormData();
     formData.append('file', file)
+    formData.append('patientId', this.patientId.toString())
     return this.req.post('/file/upload', formData);
   }
 }

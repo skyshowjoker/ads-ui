@@ -34,6 +34,7 @@ import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { AppHeaderComponent } from './app-header/app-header.component';
 import { UploadComponent } from './upload/upload.component';
+
 registerLocaleData(en);
 
 @NgModule({

@@ -1,5 +1,4 @@
-<nz-upload nzType="drag" nzName="file" [nzShowButton]="true" [nzAction] = "" [nzBeforeUpload]="beforeUpload"
-  (nzChange)="handleChange($event)">
+<nz-upload nzType="drag" nzName="file" [nzShowUploadList]="true" [nzBeforeUpload]="beforeUpload">
   <p class="ant-upload-drag-icon">
     <span nz-icon nzType="inbox"></span>
   </p>
@@ -8,3 +7,4 @@
     支持.nz格式
   </p>
 </nz-upload>
+<button nz-button nzType="primary" (click)="submitForm()">上传</button>
