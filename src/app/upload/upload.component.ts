@@ -1,8 +1,10 @@
 import { HttpClient, HttpEvent } from '@angular/common/http';
 import { Component, Input } from '@angular/core';
 import { NzDescriptionsSize } from 'ng-zorro-antd/descriptions';
+import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzUploadFile } from 'ng-zorro-antd/upload';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
+import { ConfigService } from '../service/config.service';
 import { RequestService } from '../service/http-request.service';
 
 @Component({
@@ -15,7 +17,7 @@ export class UploadComponent {
   fileList: NzUploadFile[] = []
   @Input() patientId!: number;
 
-  constructor(private req: RequestService,  private http: HttpClient) {}
+  constructor(private req: RequestService,  private http: HttpClient, private msg: NzMessageService, private config: ConfigService) {}
   size: NzDescriptionsSize = 'default';
 
 
@@ -40,18 +42,31 @@ export class UploadComponent {
     } else if (status === 'error') {
       // this.msg.error(`${file.name} file upload failed.`);
     }
-    this.submitForm();
+    // this.submitForm();
   }
 
   submitForm(): void {
-    this.uploadFile(this.file).subscribe(
-      response => {
-        console.log('Java API response:', response);
-      },
-      error => {
-        console.error('Java API error:', error);
+    this.uploadFile(this.file).pipe(
+      tap( // Log the result or error
+      {
+        next: (data) => this.msg.success('上传成功', {nzDuration: 10000}),
+        error: (error) => {
+          this.msg.error('上传失败', {nzDuration: 10000})
+          this.config.handleError(error)
+        }
       }
-    )
+      )
+    );
+    // .subscribe(
+    //   response => {
+    //     console.log('Java API response:', response)
+    //     this.msg.success('上传成功', {nzDuration: 10000})
+    //   },
+    //   error => {
+    //     console.error('Java API error:', error);
+    //     this.msg.error('上传失败', {nzDuration: 10000})
+    //   }
+    // )
   }
 
   uploadFile(file: File): Observable<HttpEvent<any>> {
