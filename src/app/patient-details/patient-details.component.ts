@@ -33,11 +33,17 @@ export class PatientDetailsComponent implements OnInit{
   }
 
   getPatientDetail(id: number){
-    const url = `/patient/getDetailById?id=${id}`;
+    const url = `/patient/getDetailById?id=${id}`
     this.req.get(url).subscribe(response => {
       this.patient = response
       console.log(response)
       console.log(this.patient)
+    })
+  }
+  getPatientPredict(){
+    const url = `/patient/predict?patientId=${this.patientId}`;
+    this.req.get(url).subscribe(response => {
+      this.getPatientDetail(this.patientId)
     })
   }
 

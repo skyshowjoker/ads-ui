@@ -7,4 +7,7 @@ export interface Patient{
     phone: string | null;
     email: string | null;
     description: string | null;
+    uploadDate: Date | null
+    emzlResult: string | null
+    ProgressiveResult: string | null
 }

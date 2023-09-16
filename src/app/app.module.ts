@@ -34,6 +34,10 @@ import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { AppHeaderComponent } from './app-header/app-header.component';
 import { UploadComponent } from './upload/upload.component';
+import { NzSpinModule } from 'ng-zorro-antd/spin';
+import { LoadingComponent } from './loading/loading.component';
+
+import { NzMessageModule } from 'ng-zorro-antd/message';
 
 registerLocaleData(en);
 
@@ -49,7 +53,8 @@ registerLocaleData(en);
     PatientDashboardComponent,
     PatientUploadComponent,
     AppHeaderComponent,
-    UploadComponent
+    UploadComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
@@ -68,6 +73,8 @@ registerLocaleData(en);
     ReactiveFormsModule,
     NzButtonModule,
     NzTableModule,
+    NzSpinModule,
+    NzMessageModule
     
   ],
   providers: [

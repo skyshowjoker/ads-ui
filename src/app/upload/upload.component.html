@@ -1,10 +1,11 @@
-<nz-upload nzType="drag" nzName="file" [nzShowUploadList]="true" [nzBeforeUpload]="beforeUpload">
+<nz-upload nzType="drag" nzName="file" [nzMultiple]="true" [nzShowUploadList]="true" [nzBeforeUpload]="beforeUpload" 
+ nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76">
   <p class="ant-upload-drag-icon">
     <span nz-icon nzType="inbox"></span>
   </p>
   <p class="ant-upload-text">上传眼眶淋巴瘤核磁共振图像</p>
   <p class="ant-upload-hint">
-    支持.nz格式
+    支持.nii.nz格式
   </p>
 </nz-upload>
 <button nz-button nzType="primary" (click)="submitForm()">上传</button>

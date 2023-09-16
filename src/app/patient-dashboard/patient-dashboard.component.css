@@ -1,0 +1,9 @@
+
+[nz-button] {
+    margin-right: 8px;
+    margin-bottom: 12px;
+  }
+.delete {
+    background-color: #ff7f7f;
+    border-color: #ff7f7f;
+}

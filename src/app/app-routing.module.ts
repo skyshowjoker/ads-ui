@@ -8,11 +8,12 @@ import {LoginGuardService} from './service/login-guard.service'
 import { LoginComponent } from './login/login.component';
 import { PatientDashboardComponent } from './patient-dashboard/patient-dashboard.component';
 import { PatientRegisterComponent } from './patient-register/patient-register.component';
+import { LoadingGuard } from './service/loading-guard.service';
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/home' },
   {
     // path: 'home', component: HomeComponent, canActivate: [LoginGuardService],
-    path: 'home', component: HomeComponent,
+    path: 'home', component: HomeComponent, canActivate: [LoadingGuard],
     children: [
       { path: 'detail/:id', component: PatientDetailsComponent},
       { path: 'dashboard', component: PatientDashboardComponent},

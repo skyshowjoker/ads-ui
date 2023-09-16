@@ -53,3 +53,39 @@ span {
   
 
 }
+
+ul  {
+  /* background-color: #333; */
+  list-style-type: none;
+  
+}
+
+li {
+  margin-left: 5px;
+  font-size: 16px;
+  color: #fff;
+  padding-top: 10px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+/* 图标样式 */
+.icons {
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+/* 鼠标悬停效果 */
+li nz-menu-item:hover {
+  background-color: #555;
+}
+
+/* 激活的菜单项 */
+li nz-menu-item.active {
+  background-color: #007bff;
+}
+
+/* 阴影和圆角 */
+ul nz-menu {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}

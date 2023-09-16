@@ -22,13 +22,22 @@
   </nz-descriptions>
   <br />
   <br />
-  <nz-descriptions nzTitle="辅助诊断结果" [nzSize]="size" [nzExtra]="extraTpl">
+  <!-- <button nz-button nzType="primary" nzBlock (click)="getPatientPredict()" *ngIf="patient and !patient.uploadDate" [hidden]="patient.uploadDate">智能模型预测</button> -->
+  <!-- <nz-descriptions nzTitle="辅助诊断结果" [nzSize]="size" [nzExtra]="extraTpl" *ngIf="patient and patient.uploadDate" [hidden]="patient.uploadDate">
     <nz-descriptions-item nzTitle="诊断指标">EMZL/non-EMZL</nz-descriptions-item>
-    <nz-descriptions-item nzTitle="影像日期">2019-8-7</nz-descriptions-item>
-    <nz-descriptions-item nzTitle="模型预测">non-EMZL</nz-descriptions-item>
+    <nz-descriptions-item nzTitle="影像日期">{{patient.uploadDate}}</nz-descriptions-item>
+    <nz-descriptions-item nzTitle="模型预测">{{patient.emzlResult}}</nz-descriptions-item>
     <nz-descriptions-item nzTitle="诊断指标">Indolent/progressive mature B-cell lymphoma</nz-descriptions-item>
-    <nz-descriptions-item nzTitle="影像日期">2019-8-7</nz-descriptions-item>
-    <nz-descriptions-item nzTitle="模型预测">Progressive mature B-cell lymphoma</nz-descriptions-item>
+    <nz-descriptions-item nzTitle="影像日期">{{patient.uploadDate}}</nz-descriptions-item>
+    <nz-descriptions-item nzTitle="模型预测">{{patient.ProgressiveResult}}</nz-descriptions-item>
+  </nz-descriptions> -->
+  <nz-descriptions nzTitle="辅助诊断结果" [nzSize]="size" [nzExtra]="extraTpl" *ngIf="patient and patient.uploadDate" [hidden]="patient.uploadDate">
+    <nz-descriptions-item nzTitle="诊断指标">EMZL/non-EMZL</nz-descriptions-item>
+    <nz-descriptions-item nzTitle="影像日期">2023.09.11</nz-descriptions-item>
+    <nz-descriptions-item nzTitle="模型预测">EMZL</nz-descriptions-item>
+    <nz-descriptions-item nzTitle="诊断指标">Indolent/progressive mature B-cell lymphoma</nz-descriptions-item>
+    <nz-descriptions-item nzTitle="影像日期">2023.09.11</nz-descriptions-item>
+    <nz-descriptions-item nzTitle="模型预测">progressive mature B-cell lymphoma</nz-descriptions-item>
   </nz-descriptions>
   <ng-template #extraTpl>
     <!-- <button nz-button nzType="primary">Edit</button> -->
