@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 import { RequestService } from '../service/http-request.service';
 import { Patient } from '../domain/patient';
 import { ActivatedRoute } from '@angular/router';
+import { NzModalService } from 'ng-zorro-antd/modal';
 @Component({
   selector: 'app-patient-details',
   templateUrl: './patient-details.component.html',
@@ -17,7 +18,9 @@ export class PatientDetailsComponent implements OnInit{
   constructor(
     private req: RequestService,  
     private http: HttpClient,
-    private route: ActivatedRoute) {}
+    private route: ActivatedRoute,
+    private modal: NzModalService,
+    private message: NzMessageService) {}
 
 
     size: NzDescriptionsSize = 'default'
@@ -43,11 +46,31 @@ export class PatientDetailsComponent implements OnInit{
   getPatientPredict(){
     const url = `/patient/predict?patientId=${this.patientId}`;
     this.req.get(url).subscribe(response => {
-      this.getPatientDetail(this.patientId)
+      if(response.status = 204){
+        this.message.create('error', `Predict fail, please upload a image file.`);
+      }else{
+        this.message.create('success', `Predict success`);
+        this.getPatientDetail(this.patientId)
+      }
+      
     })
   }
 
-
+  showPredictConfirm(): void {
+    this.modal.confirm({
+      nzTitle: 'Are you sure predict this patient?',
+      // nzContent: '<b style="color: red;">Some descriptions</b>',
+      nzOkText: 'Yes',
+      nzOkType: 'primary',
+      nzOkDanger: true,
+      nzOnOk: () => {
+        this.getPatientPredict()
+        console.log('OK')
+      },
+      nzCancelText: 'No',
+      nzOnCancel: () => console.log('Cancel')
+    });
+  }
 
 
 
