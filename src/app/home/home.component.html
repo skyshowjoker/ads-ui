@@ -8,25 +8,25 @@
         
         <span class="icons" nz-icon nzType="folder-open" nzTheme="fill"></span>
         
-        <a routerLink="/home/detail"><span>病人信息</span></a>
+        <a routerLink="/home/detail"><span i18n>{{ 'Patient Info' | translate }}</span></a>
     
       </li>
       <li nz-menu-item>
         <span class="icons" nz-icon nzType="database" nzTheme="fill"></span>
         
-        <a routerLink="/home/dashboard"><span>病人列表</span></a>
+        <a routerLink="/home/dashboard"><span>{{ 'Patient List' | translate }}</span></a>
       </li>
       <li nz-menu-item>
         <span class="icons" nz-icon nzType="edit" nzTheme="fill"></span>
         
-        <a routerLink="/home/register"><span>新增病人</span></a>
+        <a routerLink="/home/register"><span>{{ 'Patient Register' | translate }}</span></a>
       </li>
 
 
       <li nz-menu-item>
         <span class="icons" nz-icon nzType="setting" nzTheme="fill"></span>
         
-        <a routerLink="/home/setting"><span>设置</span></a>
+        <a routerLink="/home/setting"><span>{{ 'Setting' | translate }}</span></a>
       </li>
     </ul>
   </nz-sider>
@@ -37,7 +37,11 @@
         <router-outlet></router-outlet>
       </div>
     </nz-content>
-    <nz-footer>上海第九人民医院 华东师范大学</nz-footer>
+
+    <nz-footer>
+      <p>{{ 'East China Normal University' | translate }}</p>
+      <p>{{ 'Shanghai Ninth Peaple\'s Hospital' | translate }} </p>
+    </nz-footer>
   </nz-layout>
 </nz-layout>
 

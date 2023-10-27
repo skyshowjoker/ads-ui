@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { NzModalService } from 'ng-zorro-antd/modal';
 import { RequestService } from '../service/http-request.service';
 interface ItemData {
   id: number;
@@ -17,7 +20,10 @@ interface ItemData {
 
 })
 export class PatientDashboardComponent implements OnInit {
-  constructor(private req: RequestService) {}
+  constructor(private req: RequestService,
+    private modal: NzModalService,
+    private router: Router,
+    private message: NzMessageService) {}
 
   listOfSelection = [
     {
@@ -75,6 +81,38 @@ export class PatientDashboardComponent implements OnInit {
     this.indeterminate = this.listOfCurrentPageData.some(item => this.setOfCheckedId.has(item.id)) && !this.checked;
   }
 
+  deletePatient(id: number){
+    this.req.get(`/patient/delete?patientId=${id}` ).subscribe(response => {
+      this.message.create('success', `Delete success`);
+      console.log(response);
+    })
+  }
+
+  showDeleteConfirm(id: number): void {
+    this.modal.confirm({
+      nzTitle: 'Are you sure delete this patient?',
+      // nzContent: '<b style="color: red;">Some descriptions</b>',
+      nzOkText: 'Yes',
+      nzOkType: 'primary',
+      nzOkDanger: true,
+      nzOnOk: () => {
+        this.deletePatient(id)
+        this.showAllData();
+        console.log('OK')
+      },
+      nzCancelText: 'No',
+      nzOnCancel: () => console.log('Cancel')
+    });
+  }
+
+  showAllData(){
+    this.req.get("/patient/all").subscribe(response => {
+      console.log(response);
+      
+      this.listOfData = response.body
+    }
+    )
+  }
   ngOnInit(): void {
     // this.listOfData = new Array(2).fill(0).map((_, index) => ({
     //   id: index,
@@ -85,11 +123,8 @@ export class PatientDashboardComponent implements OnInit {
     //   phone: ``,
  
     // }));
-    this.req.get("/patient/all").subscribe(response => {
-      console.log(response);
-      
-      this.listOfData = response
-    }
-    )
+    this.showAllData();
   }
+
+ 
 }

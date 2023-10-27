@@ -1,0 +1,35 @@
+{
+    "Lymphoma Auxiliary Diagnosis System": "淋巴瘤辅助诊断系统",
+    "greeting": "你好，世界！",
+    "Patient Register": "新增病人",
+    "Patient List": "病人列表",
+    "Patient Info": "病人信息",
+    "Patient Information": "病人信息",
+    "Setting": "设置",
+    "Shanghai Ninth Peaple's Hospital": "上海第九人民医院",
+    "East China Normal University": "华东师范大学",
+    "Name": "姓名",
+    "Birthday": "出生日期",
+    "Gender": "性别",
+    "Phone number": "手机号",
+    "Medical record number": "病历号",
+    "Basic description": "基本情况",
+    "Auxiliary Diagnostic Results": "辅助诊断结果",
+    "Diagnostic indicator": "诊断指标",
+    "Image uploading date": "影像日期",
+    "Upload orbital lymphoma MRI images": "上传眼眶淋巴瘤核磁共振图像",
+    "Support .nii.nz format": "支持.nii.nz格式",
+    "Upload": "上传",
+    "Register": "录入",
+    "Condition description": "病情描述",
+    "Reset": "清空",
+    "Are you sure delete this patient?": "确定删除此记录？",
+    "Intelligent model predict": "智能模型预测"
+
+
+ 
+    
+    
+
+  }
+  

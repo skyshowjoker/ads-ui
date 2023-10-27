@@ -26,7 +26,7 @@ export class RequestService {
       }
     }
 
-    return this.http.get(API_URL + url, { params: httpParams }).pipe(
+    return this.http.get(API_URL + url, { params: httpParams, observe: 'response' }).pipe(
       catchError(this.handleError)
     );
   }

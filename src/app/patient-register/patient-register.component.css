@@ -1,5 +1,6 @@
 [nz-form] {
-  max-width: 600px;
+  max-width: 100%;
+  
 }
 
 .phone-select {
@@ -8,4 +9,31 @@
 
 .register-are {
   margin-bottom: 8px;
+}
+
+.register-content{
+  align-content: center;
+  background-color: rgb(243, 243, 243);
+  padding-bottom: 20px;
+}
+.title{
+  
+  position: relative;
+}
+
+h1 {
+  color: #1b1b1b;
+  font-weight: bold;
+  margin-left: 8px;
+  text-align: center;
+}
+.form {
+  margin-top: 5%;
+  margin-left: 5%;
+  margin-bottom: 10%;
+
+}
+
+nz-button {
+  margin-right: 8px;
 }

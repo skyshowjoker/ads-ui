@@ -1,45 +1,54 @@
-<div>
-  <app-upload [patientId]="patient!.id"></app-upload>
-</div>
+<div class="patient-detail-content">
+  <div>
+    <app-upload [patientId]="patient!.id"></app-upload>
+  </div>
 
-<div>
-  <!-- <nz-radio-group [(ngModel)]="size">
+  <div>
+    <!-- <nz-radio-group [(ngModel)]="size">
     <label nz-radio nzValue="default">default</label>
     <label nz-radio nzValue="middle">middle</label>
     <label nz-radio nzValue="small">small</label>
   </nz-radio-group> -->
-  <br />
-  <br />
-  <nz-descriptions nzTitle="病人信息" [nzExtra]="extraTpl" nzBordered [nzSize]="size" *ngIf="patient">
-    <nz-descriptions-item nzTitle="姓名">{{patient.name}}</nz-descriptions-item>
-    <nz-descriptions-item nzTitle="出生日期">{{patient.birthday}}</nz-descriptions-item>
-    <nz-descriptions-item nzTitle="性别">{{patient.gender}}</nz-descriptions-item>
-    <nz-descriptions-item nzTitle="病历号">{{patient.caseId}}</nz-descriptions-item>
-    <nz-descriptions-item nzTitle="手机号">{{patient.phone}}</nz-descriptions-item>
-    <nz-descriptions-item nzTitle="邮箱地址">{{patient.email}}</nz-descriptions-item>
-    <nz-descriptions-item nzTitle="基本情况">{{patient.description}}
-  </nz-descriptions-item>
-  </nz-descriptions>
-  <br />
-  <br />
-  <!-- <button nz-button nzType="primary" nzBlock (click)="getPatientPredict()" *ngIf="patient and !patient.uploadDate" [hidden]="patient.uploadDate">智能模型预测</button> -->
-  <!-- <nz-descriptions nzTitle="辅助诊断结果" [nzSize]="size" [nzExtra]="extraTpl" *ngIf="patient and patient.uploadDate" [hidden]="patient.uploadDate">
-    <nz-descriptions-item nzTitle="诊断指标">EMZL/non-EMZL</nz-descriptions-item>
-    <nz-descriptions-item nzTitle="影像日期">{{patient.uploadDate}}</nz-descriptions-item>
-    <nz-descriptions-item nzTitle="模型预测">{{patient.emzlResult}}</nz-descriptions-item>
-    <nz-descriptions-item nzTitle="诊断指标">Indolent/progressive mature B-cell lymphoma</nz-descriptions-item>
-    <nz-descriptions-item nzTitle="影像日期">{{patient.uploadDate}}</nz-descriptions-item>
-    <nz-descriptions-item nzTitle="模型预测">{{patient.ProgressiveResult}}</nz-descriptions-item>
-  </nz-descriptions> -->
-  <nz-descriptions nzTitle="辅助诊断结果" [nzSize]="size" [nzExtra]="extraTpl" *ngIf="patient and patient.uploadDate" [hidden]="patient.uploadDate">
+    <br />
+    <br />
+    <nz-descriptions nzTitle="{{ 'Patient Information' | translate }}" [nzExtra]="extraTpl" nzBordered [nzSize]="size"
+      *ngIf="patient">
+      <nz-descriptions-item nzTitle="{{ 'Name' | translate }}">{{patient.name}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="{{ 'Birthday' | translate }}">{{patient.birthday}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="{{ 'Gender' | translate }}">{{patient.gender}}</nz-descriptions-item>
+      <nz-descriptions-item
+        nzTitle="{{ 'Medical record number' | translate }}">{{patient.caseId}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="{{ 'Phone number' | translate }}">{{patient.phone}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="{{ 'Basic description' | translate }}">{{patient.description}}
+      </nz-descriptions-item>
+    </nz-descriptions>
+    <br />
+    <br />
+    <button nz-button nzType="primary" nzBlock (click)="showPredictConfirm()" *ngIf="patient and !patient.uploadDate"
+      [hidden]="patient.uploadDate">{{ 'Intelligent model predict' | translate }}</button>
+    <nz-descriptions nzTitle="{{ 'Auxiliary Diagnostic Results' | translate }}" [nzSize]="size" [nzExtra]="extraTpl"
+      *ngIf="patient and patient.uploadDate" [hidden]="!patient.uploadDate">
+      <nz-descriptions-item nzTitle="{{ 'Diagnostic indicator' | translate }}">EMZL/non-EMZL</nz-descriptions-item>
+      <nz-descriptions-item
+        nzTitle="{{ 'Image uploading date' | translate }}">{{patient.uploadDate}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="{{ 'Prediction' | translate }}">{{patient.emzlResult}}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="{{ 'Diagnostic indicator' | translate }}">Indolent/progressive mature B-cell
+        lymphoma</nz-descriptions-item>
+      <nz-descriptions-item
+        nzTitle="{{ 'Image uploading date' | translate }}">{{patient.uploadDate}}</nz-descriptions-item>
+      <nz-descriptions-item
+        nzTitle="{{ 'Predictionme' | translate }}">{{patient.ProgressiveResult}}</nz-descriptions-item>
+    </nz-descriptions>
+    <!-- <nz-descriptions nzTitle="辅助诊断结果" [nzSize]="size" [nzExtra]="extraTpl" *ngIf="patient and patient.uploadDate" [hidden]="patient.uploadDate">
     <nz-descriptions-item nzTitle="诊断指标">EMZL/non-EMZL</nz-descriptions-item>
     <nz-descriptions-item nzTitle="影像日期">2023.09.11</nz-descriptions-item>
     <nz-descriptions-item nzTitle="模型预测">EMZL</nz-descriptions-item>
     <nz-descriptions-item nzTitle="诊断指标">Indolent/progressive mature B-cell lymphoma</nz-descriptions-item>
     <nz-descriptions-item nzTitle="影像日期">2023.09.11</nz-descriptions-item>
     <nz-descriptions-item nzTitle="模型预测">progressive mature B-cell lymphoma</nz-descriptions-item>
-  </nz-descriptions>
-  <ng-template #extraTpl>
-    <!-- <button nz-button nzType="primary">Edit</button> -->
-  </ng-template>
+  </nz-descriptions> -->
+    <ng-template #extraTpl>
+      <!-- <button nz-button nzType="primary">Edit</button> -->
+    </ng-template>
+  </div>
 </div>

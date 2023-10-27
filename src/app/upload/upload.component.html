@@ -3,9 +3,9 @@
   <p class="ant-upload-drag-icon">
     <span nz-icon nzType="inbox"></span>
   </p>
-  <p class="ant-upload-text">上传眼眶淋巴瘤核磁共振图像</p>
+  <p class="ant-upload-text">{{ 'Upload orbital lymphoma MRI images' | translate }}</p>
   <p class="ant-upload-hint">
-    支持.nii.nz格式
+    {{ 'Support .nii.nz format' | translate }}
   </p>
 </nz-upload>
-<button nz-button nzType="primary" (click)="submitForm()">上传</button>
+<button nz-button nzType="primary" (click)="submitForm()">{{ 'Upload' | translate }}</button>

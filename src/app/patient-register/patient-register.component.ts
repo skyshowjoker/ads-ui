@@ -1,7 +1,11 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {  OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NzFormTooltipIcon } from 'ng-zorro-antd/form';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { RequestService } from '../service/http-request.service';
 
 
 
@@ -11,6 +15,13 @@ import { NzFormTooltipIcon } from 'ng-zorro-antd/form';
   styleUrls: ['./patient-register.component.css']
 })
 export class PatientRegisterComponent implements OnInit {
+  constructor(private fb: UntypedFormBuilder,
+    private req: RequestService,  
+    private http: HttpClient,
+    private router: Router,
+    private message: NzMessageService) {}
+
+
   validateForm!: UntypedFormGroup;
   captchaTooltipIcon: NzFormTooltipIcon = {
     type: 'info-circle',
@@ -18,8 +29,15 @@ export class PatientRegisterComponent implements OnInit {
   };
 
   submitForm(): void {
+    console.log(this.validateForm.value)
     if (this.validateForm.valid) {
       console.log('submit', this.validateForm.value);
+      const url = `/patient/save`;
+      this.req.post(url, this.validateForm.value).subscribe(response => {
+      console.log(response)
+      this.message.create('success', `Register success`);
+      this.router.navigate(['/home/detail/' + response]);
+    })
     } else {
       Object.values(this.validateForm.controls).forEach(control => {
         if (control.invalid) {
@@ -29,38 +47,26 @@ export class PatientRegisterComponent implements OnInit {
       });
     }
   }
-
-  updateConfirmValidator(): void {
-    /** wait for refresh value */
-    Promise.resolve().then(() => this.validateForm.controls['checkPassword'].updateValueAndValidity());
+  resetForm(e: MouseEvent): void {
+    e.preventDefault();
+    this.validateForm.reset();
   }
 
-  confirmationValidator = (control: UntypedFormControl): { [s: string]: boolean } => {
-    if (!control.value) {
-      return { required: true };
-    } else if (control.value !== this.validateForm.controls['password'].value) {
-      return { confirm: true, error: true };
-    }
-    return {};
-  };
+
 
   getCaptcha(e: MouseEvent): void {
     e.preventDefault();
   }
 
-  constructor(private fb: UntypedFormBuilder) {}
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
-      name: [null, [Validators.email, Validators.required]],
-      gender: [null, [Validators.required]],
-      birthday: [null],
-      caseId: [null, [Validators.required]],
-      phoneNumberPrefix: ['+86'],
-      phone: [null, [Validators.required]],
-      email: [null],
-      description: [null, [Validators.required]]
-
+      name: [''],
+      gender: ['' ],
+      birthday: [''],
+      caseId: ['' ],
+      phone: ['' ],
+      description: ['']
     });
   }
 }

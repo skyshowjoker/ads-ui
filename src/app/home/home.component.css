@@ -5,15 +5,17 @@
 }
 nz-layout {
   height: 100%;
-  
 }
 nz-header {
   background: #fff;
   padding: 0;
 }
-
+nz-slider{
+  height: 100%;
+}
 nz-content {
   margin: 0 16px;
+
 }
 
 nz-breadcrumb {
@@ -24,10 +26,17 @@ nz-breadcrumb {
   padding: 24px;
   background: #fff;
   min-height: 360px;
+  max-height: 800px;
+  overflow-y: scroll;
 }
 
 nz-footer {
+  background-color: #ffffff; 
   text-align: center;
+  padding: 20px; /* 设置内边距 */
+  font-size: 15px;
+  font-weight: 400;
+  color:#555;
 }
 span.icons {
   color:rgba(255, 255, 255, 0.877);

@@ -12,7 +12,7 @@ import { en_US } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzGridModule } from 'ng-zorro-antd/grid';
@@ -36,8 +36,12 @@ import { AppHeaderComponent } from './app-header/app-header.component';
 import { UploadComponent } from './upload/upload.component';
 import { NzSpinModule } from 'ng-zorro-antd/spin';
 import { LoadingComponent } from './loading/loading.component';
-
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { NzMessageModule } from 'ng-zorro-antd/message';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzModalModule } from 'ng-zorro-antd/modal';
 
 registerLocaleData(en);
 
@@ -74,7 +78,17 @@ registerLocaleData(en);
     NzButtonModule,
     NzTableModule,
     NzSpinModule,
-    NzMessageModule
+    NzMessageModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      }
+    }),
+    NzDatePickerModule,
+    NzInputModule,
+    NzModalModule
     
   ],
   providers: [
@@ -84,3 +98,7 @@ registerLocaleData(en);
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
