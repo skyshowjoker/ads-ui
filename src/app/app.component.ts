@@ -9,7 +9,7 @@ export class AppComponent {
   title = 'ads-ui';
 
   constructor(private translate: TranslateService) {
-    translate.setDefaultLang('zh'); // 设置默认语言
+    translate.setDefaultLang('en'); // 设置默认语言
   }
 
   switchLanguage(lang: string) {

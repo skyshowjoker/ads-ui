@@ -9,5 +9,5 @@ export interface Patient{
     description: string | null;
     uploadDate: Date | null
     emzlResult: string | null
-    ProgressiveResult: string | null
+    progressiveResult: string | null
 }

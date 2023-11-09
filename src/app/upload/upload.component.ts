@@ -46,17 +46,12 @@ export class UploadComponent {
   }
 
   submitForm(): void {
-    this.uploadFile(this.file).pipe(
-      tap( // Log the result or error
-      {
-        next: (data) => this.msg.success('上传成功', {nzDuration: 10000}),
-        error: (error) => {
-          this.msg.error('上传失败', {nzDuration: 10000})
-          this.config.handleError(error)
-        }
-      }
-      )
-    );
+    this.msg.info('Start uploading', {nzDuration: 1000})
+    console.log(this.file)
+    this.uploadFile(this.file).subscribe(response => {
+        console.log('Java API response:', response)
+        this.msg.success('上传成功', {nzDuration: 10000})
+    })
     // .subscribe(
     //   response => {
     //     console.log('Java API response:', response)
@@ -73,6 +68,15 @@ export class UploadComponent {
     const formData: FormData = new FormData();
     formData.append('file', file)
     formData.append('patientId', this.patientId.toString())
-    return this.req.post('/file/upload', formData);
+    return this.req.post('/file/upload', formData).pipe(
+      tap( // Log the result or error
+      {
+        next: (data) => this.msg.success('Upload successfully', {nzDuration: 10000}),
+        error: (error) => {
+          this.msg.success('Upload successfully', {nzDuration: 10000})
+          this.config.handleError(error)
+        }
+      }
+      ))
   }
 }

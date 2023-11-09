@@ -24,7 +24,10 @@
     "Condition description": "病情描述",
     "Reset": "清空",
     "Are you sure delete this patient?": "确定删除此记录？",
-    "Intelligent model predict": "智能模型预测"
+    "Intelligent model predict": "智能模型预测",
+    "Action": "操作",
+    "Detail": "详情",
+    "Delete": "删除"
 
 
  

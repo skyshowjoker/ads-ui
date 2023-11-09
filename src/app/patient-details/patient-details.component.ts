@@ -38,7 +38,7 @@ export class PatientDetailsComponent implements OnInit{
   getPatientDetail(id: number){
     const url = `/patient/getDetailById?id=${id}`
     this.req.get(url).subscribe(response => {
-      this.patient = response
+      this.patient = response.body
       console.log(response)
       console.log(this.patient)
     })

@@ -71,9 +71,11 @@
               "browserTarget": "ads-ui:build:development"
             }
           },
+          
           "defaultConfiguration": "development",
           "options": {
-            "proxyConfig": "proxy.conf.json"
+            "proxyConfig": "proxy.conf.json",
+            "disableHostCheck": true
           }
           
         },

@@ -32,7 +32,9 @@ export class RequestService {
   }
 
   post(url: string, data: any): Observable<any> {
-    return this.http.post(API_URL + url, data).pipe(
+    return this.http.post(API_URL + url, data, {
+      withCredentials: true
+  }).pipe(
       catchError(this.handleError)
     );
   }
